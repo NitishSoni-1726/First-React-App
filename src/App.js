@@ -2,7 +2,6 @@ import { useState } from "react";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 
 function App() {
@@ -32,24 +31,17 @@ function App() {
   }, 1000);
   return (
     <>
-      <Router>
-        <Navbar
-          title="Text-Utils"
-          modehandle={handleMode}
-          mode={mode}
-          text={modeText}
-        />
-        <Alert text={alert} />
-        <div className="container">
-          <Routes>
-            <Route
-              path="/"
-              element={<TextForm buttonMode={buttonMode} mode={mode} />}
-            />
-          </Routes>
-        </div>
-        <Footer mode={mode} />
-      </Router>
+      <Navbar
+        title="Text-Utils"
+        modehandle={handleMode}
+        mode={mode}
+        text={modeText}
+      />
+      <Alert text={alert} />
+      <div className="container">
+        <TextForm buttonMode={buttonMode} mode={mode} />
+      </div>
+      <Footer mode={mode} />
     </>
   );
 }
